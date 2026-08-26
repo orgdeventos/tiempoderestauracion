@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Tiempo de Restauración | Tienda Oficial
+</title>
+
+<meta
+name="description"
+content="Tienda oficial del eBook 13 Claves Para Ser Restaurado."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+:root{
+
+--azul:#071c2f;
+--verde:#1f5b44;
+--verde2:#2f765b;
+
+--blanco:#ffffff;
+
+--fondo:#f6f8f7;
+
+--gris:#68757d;
+
+--borde:rgba(7,28,47,.12);
+
+--sombra:0 22px 55px rgba(7,28,47,.12);
+
+--max:1180px;
+
+}
+
+*{
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+margin:0;
+
+font-family:"DM Sans",sans-serif;
+
+color:var(--azul);
+
+background:white;
+
+overflow-x:hidden;
+
+}
+
+body.no-scroll{
+overflow:hidden;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button,
+input{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+.container{
+
+width:min(
+var(--max),
+calc(100% - 40px)
+);
+
+margin:auto;
+
+}
+
+
+/* ================================
+   CONTACTO
+================================ */
+
+.contact-bar{
+
+background:var(--verde);
+
+color:white;
+
+}
+
+.contact-content{
+
+min-height:40px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+padding:8px;
+
+font-size:.88rem;
+
+}
+
+.contact-content a:hover{
+opacity:.75;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+header{
+
+position:sticky;
+
+top:0;
+
+z-index:50;
+
+background:rgba(255,255,255,.94);
+
+backdrop-filter:blur(15px);
+
+border-bottom:1px solid var(--borde);
+
+}
+
+.nav{
+
+min-height:90px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:25px;
+
+}
+
+.brand-logo{
+
+width:145px;
+
+height:76px;
+
+object-fit:contain;
+
+}
+
+.nav-right{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+}
+
+.navlinks{
+
+display:flex;
+
+align-items:center;
+
+gap:23px;
+
+font-size:.94rem;
+
+font-weight:600;
+
+}
+
+.navlinks a{
+
+opacity:.8;
+
+transition:.2s;
+
+}
+
+.navlinks a:hover{
+
+opacity:1;
+
+color:var(--verde);
+
+}
+
+.nav-cta{
+
+background:var(--azul);
+
+color:white!important;
+
+padding:12px 18px;
+
+border-radius:999px;
+
+opacity:1!important;
+
+}
+
+
+/* CARRITO HEADER */
+
+.cart-button{
+
+position:relative;
+
+width:50px;
+
+height:50px;
+
+border:none;
+
+border-radius:50%;
+
+background:var(--fondo);
+
+font-size:1.25rem;
+
+}
+
+.cart-number{
+
+position:absolute;
+
+top:-3px;
+
+right:-3px;
+
+width:21px;
+
+height:21px;
+
+border-radius:50%;
+
+background:var(--verde);
+
+color:white;
+
+display:grid;
+
+place-items:center;
+
+font-size:.7rem;
+
+font-weight:800;
+
+}
+
+.menu-btn{
+
+display:none;
+
+border:0;
+
+background:transparent;
+
+font-size:1.6rem;
+
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero{
+
+padding:85px 0;
+
+background:
+
+radial-gradient(
+circle at 75% 25%,
+rgba(31,91,68,.14),
+transparent 32%
+),
+
+linear-gradient(
+180deg,
+#fbfdfc,
+white
+);
+
+}
+
+.hero-grid{
+
+display:grid;
+
+grid-template-columns:1.05fr .95fr;
+
+align-items:center;
+
+gap:70px;
+
+}
+
+.eyebrow{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:9px;
+
+color:var(--verde);
+
+font-size:.82rem;
+
+font-weight:800;
+
+letter-spacing:.14em;
+
+text-transform:uppercase;
+
+margin-bottom:18px;
+
+}
+
+.eyebrow:before{
+
+content:"";
+
+width:34px;
+
+height:2px;
+
+background:var(--verde);
+
+}
+
+h1{
+
+font-family:"Playfair Display",serif;
+
+font-size:clamp(
+3rem,
+6vw,
+5.5rem
+);
+
+line-height:.98;
+
+letter-spacing:-.045em;
+
+margin:0 0 22px;
+
+}
+
+h1 span{
+color:var(--verde);
+}
+
+.lead{
+
+font-size:1.08rem;
+
+line-height:1.8;
+
+color:var(--gris);
+
+max-width:620px;
+
+}
+
+.hero-actions{
+
+display:flex;
+
+gap:13px;
+
+flex-wrap:wrap;
+
+margin-top:30px;
+
+}
+
+.btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+border:0;
+
+border-radius:999px;
+
+padding:15px 23px;
+
+font-weight:800;
+
+transition:.25s;
+
+}
+
+.btn-primary{
+
+background:var(--verde);
+
+color:white;
+
+box-shadow:
+0 14px 30px
+rgba(31,91,68,.2);
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-2px);
+
+background:var(--verde2);
+
+}
+
+.btn-secondary{
+
+background:white;
+
+border:1px solid var(--borde);
+
+color:var(--azul);
+
+}
+
+.book{
+
+width:min(
+390px,
+82vw
+);
+
+margin:auto;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:
+0 30px 80px
+rgba(7,28,47,.22);
+
+transition:.4s;
+
+}
+
+.book:hover{
+
+transform:
+translateY(-7px)
+rotate(.5deg);
+
+}
+
+
+/* ================================
+   SECCIONES
+================================ */
+
+section{
+padding:90px 0;
+}
+
+.about-box{
+
+max-width:920px;
+
+margin:auto;
+
+padding:50px;
+
+border-radius:30px;
+
+border:1px solid var(--borde);
+
+background:
+
+linear-gradient(
+135deg,
+white,
+#f5f9f7
+);
+
+box-shadow:var(--sombra);
+
+text-align:center;
+
+}
+
+.about-box h2{
+
+font-family:"Playfair Display";
+
+font-size:clamp(
+2.2rem,
+4vw,
+3.4rem
+);
+
+}
+
+.about-box p{
+
+color:var(--gris);
+
+font-size:1.05rem;
+
+line-height:1.9;
+
+}
+
+
+/* BENEFICIOS */
+
+.benefits{
+background:var(--fondo);
+}
+
+.section-head{
+
+max-width:700px;
+
+margin:
+0 auto 45px;
+
+text-align:center;
+
+}
+
+.section-head h2{
+
+font-family:"Playfair Display";
+
+font-size:clamp(
+2.3rem,
+4vw,
+3.5rem
+);
+
+}
+
+.section-head p{
+
+color:var(--gris);
+
+line-height:1.8;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:18px;
+
+}
+
+.card{
+
+padding:30px;
+
+border:1px solid var(--borde);
+
+border-radius:22px;
+
+background:white;
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:var(--sombra);
+
+}
+
+.card p{
+
+color:var(--gris);
+
+line-height:1.7;
+
+}
+
+
+/* ================================
+   PRODUCTO
+================================ */
+
+.product-grid{
+
+display:grid;
+
+grid-template-columns:
+.85fr 1.15fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.product-img{
+
+max-width:430px;
+
+margin:auto;
+
+border-radius:24px;
+
+overflow:hidden;
+
+box-shadow:var(--sombra);
+
+}
+
+.product-info h2{
+
+font-family:"Playfair Display";
+
+font-size:clamp(
+2.4rem,
+4vw,
+3.7rem
+);
+
+margin-bottom:14px;
+
+}
+
+.author{
+
+color:var(--verde);
+
+font-weight:700;
+
+margin-bottom:18px;
+
+}
+
+.product-info p{
+
+color:var(--gris);
+
+line-height:1.8;
+
+}
+
+.checklist{
+
+list-style:none;
+
+padding:0;
+
+display:grid;
+
+gap:11px;
+
+}
+
+.checklist li:before{
+
+content:"✓";
+
+color:var(--verde);
+
+font-weight:900;
+
+margin-right:9px;
+
+}
+
+.price{
+
+display:flex;
+
+align-items:end;
+
+gap:10px;
+
+margin:27px 0;
+
+}
+
+.price strong{
+font-size:2.8rem;
+}
+
+.price span{
+
+color:var(--gris);
+
+padding-bottom:7px;
+
+}
+
+
+/* ================================
+   CTA
+================================ */
+
+.cta{
+
+background:
+linear-gradient(
+135deg,
+var(--verde),
+#174532
+);
+
+border-radius:34px;
+
+padding:68px 28px;
+
+text-align:center;
+
+color:white;
+
+}
+
+.cta h2{
+
+font-family:"Playfair Display";
+
+font-size:clamp(
+2.3rem,
+4vw,
+3.7rem
+);
+
+}
+
+.cta p{
+
+max-width:650px;
+
+margin:
+0 auto 25px;
+
+line-height:1.8;
+
+color:
+rgba(255,255,255,.8);
+
+}
+
+.cta .btn{
+
+background:white;
+
+color:var(--verde);
+
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer{
+
+background:#061724;
+
+color:white;
+
+padding:48px 0;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:
+1.2fr .8fr .8fr;
+
+gap:30px;
+
+}
+
+footer p,
+footer a{
+
+color:#9fb0bb;
+
+line-height:1.8;
+
+font-size:.93rem;
+
+}
+
+
+/* ================================
+   CARRITO
+================================ */
+
+.overlay{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(3,17,28,.6);
+
+backdrop-filter:blur(6px);
+
+z-index:100;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.3s;
+
+}
+
+.overlay.active{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+.cart{
+
+position:absolute;
+
+right:0;
+
+top:0;
+
+width:min(
+450px,
+100%
+);
+
+height:100%;
+
+background:white;
+
+padding:27px;
+
+display:flex;
+
+flex-direction:column;
+
+transform:translateX(100%);
+
+transition:.35s;
+
+}
+
+.overlay.active .cart{
+transform:none;
+}
+
+.cart-header{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding-bottom:18px;
+
+border-bottom:1px solid var(--borde);
+
+}
+
+.cart-header h2{
+
+font-family:"Playfair Display";
+
+margin:0;
+
+}
+
+.circle{
+
+width:39px;
+
+height:39px;
+
+border:0;
+
+border-radius:50%;
+
+background:var(--fondo);
+
+font-size:1.2rem;
+
+}
+
+.cart-items{
+
+flex:1;
+
+overflow-y:auto;
+
+padding:22px 0;
+
+}
+
+.empty{
+
+text-align:center;
+
+color:var(--gris);
+
+padding-top:60px;
+
+}
+
+.cart-item{
+
+display:grid;
+
+grid-template-columns:
+75px 1fr;
+
+gap:15px;
+
+padding:16px 0;
+
+border-bottom:1px solid var(--borde);
+
+}
+
+.cart-item img{
+
+width:75px;
+
+height:100px;
+
+border-radius:10px;
+
+object-fit:cover;
+
+}
+
+.cart-item h4{
+
+margin:0 0 5px;
+
+}
+
+.item-price{
+
+color:var(--verde);
+
+font-weight:800;
+
+}
+
+.remove{
+
+border:0;
+
+padding:0;
+
+margin-top:12px;
+
+background:transparent;
+
+color:#a43c3c;
+
+font-size:.82rem;
+
+}
+
+.cart-footer{
+
+border-top:
+1px solid var(--borde);
+
+padding-top:19px;
+
+}
+
+.total{
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:1.2rem;
+
+font-weight:800;
+
+margin-bottom:16px;
+
+}
+
+.checkout{
+
+width:100%;
+
+border:0;
+
+border-radius:999px;
+
+padding:16px;
+
+background:var(--verde);
+
+color:white;
+
+font-weight:800;
+
+}
+
+.checkout:disabled{
+
+opacity:.4;
+
+cursor:not-allowed;
+
+}
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+.payment-modal{
+
+position:fixed;
+
+inset:0;
+
+z-index:200;
+
+background:
+rgba(3,17,28,.72);
+
+backdrop-filter:blur(8px);
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+padding:20px;
+
+}
+
+.payment-modal.active{
+display:flex;
+}
+
+.payment-box{
+
+width:min(
+610px,
+100%
+);
+
+max-height:90vh;
+
+overflow-y:auto;
+
+background:white;
+
+border-radius:28px;
+
+padding:30px;
+
+box-shadow:
+0 30px 100px
+rgba(0,0,0,.3);
+
+}
+
+.payment-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+gap:20px;
+
+}
+
+.payment-top h2{
+
+font-family:"Playfair Display";
+
+font-size:2rem;
+
+margin:0 0 5px;
+
+}
+
+.checkout-product{
+
+margin:20px 0;
+
+padding:17px;
+
+border-radius:17px;
+
+background:var(--fondo);
+
+display:flex;
+
+justify-content:space-between;
+
+gap:15px;
+
+}
+
+.payment-method{
+
+border:
+1px solid
+var(--borde);
+
+border-radius:19px;
+
+padding:20px;
+
+margin-top:14px;
+
+}
+
+.payment-method h3{
+
+margin-top:0;
+
+}
+
+#paypal-button-container{
+
+margin-top:15px;
+
+min-height:45px;
+
+}
+
+.bank-button{
+
+width:100%;
+
+border:1px solid var(--borde);
+
+background:white;
+
+padding:17px;
+
+border-radius:15px;
+
+font-weight:700;
+
+text-align:left;
+
+}
+
+.bank-info{
+
+display:none;
+
+margin-top:15px;
+
+padding:17px;
+
+background:#f1f7f4;
+
+border-radius:14px;
+
+line-height:1.7;
+
+color:#425c50;
+
+}
+
+.bank-info.active{
+display:block;
+}
+
+.payment-status{
+
+display:none;
+
+margin-top:20px;
+
+padding:20px;
+
+border-radius:16px;
+
+background:#eaf6ef;
+
+color:#22533e;
+
+line-height:1.7;
+
+}
+
+.payment-status.active{
+display:block;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:900px){
+
+.hero-grid,
+.product-grid{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+}
+
+.hero{
+text-align:center;
+}
+
+.lead{
+margin:auto;
+}
+
+.hero-actions{
+justify-content:center;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.footer-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:760px){
+
+.brand-logo{
+
+width:112px;
+
+height:65px;
+
+}
+
+.navlinks{
+
+position:absolute;
+
+top:88px;
+
+left:20px;
+
+right:20px;
+
+display:none;
+
+flex-direction:column;
+
+align-items:stretch;
+
+background:white;
+
+padding:18px;
+
+border-radius:20px;
+
+box-shadow:var(--sombra);
+
+}
+
+.navlinks.open{
+display:flex;
+}
+
+.navlinks a{
+padding:10px;
+}
+
+.menu-btn{
+display:block;
+}
+
+}
+
+@media(max-width:560px){
+
+.container{
+width:calc(100% - 28px);
+}
+
+.contact-content{
+
+flex-direction:column;
+
+gap:5px;
+
+}
+
+h1{
+font-size:3rem;
+}
+
+.hero-actions{
+
+flex-direction:column;
+
+}
+
+.btn{
+width:100%;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.about-box{
+padding:30px 22px;
+}
+
+.payment-box{
+padding:22px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ===============================
+     CONTACTO
+================================ -->
+
+<div class="contact-bar">
+
+<div class="container contact-content">
+
+<a
+href="https://wa.me/50487439169"
+target="_blank"
+>
+
+💬 WhatsApp: +504 8743-9169
+
+</a>
+
+<a
+href="mailto:ruth.manzanares2016@gmail.com"
+>
+
+✉️ ruth.manzanares2016@gmail.com
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- ===============================
+     HEADER
+================================ -->
+
+<header>
+
+<div class="container nav">
+
+<a href="#inicio">
+
+<img
+src="Logo1.png"
+class="brand-logo"
+alt="Tiempo de Restauración"
+>
+
+</a>
+
+
+<div class="nav-right">
+
+<nav
+class="navlinks"
+id="navlinks"
+>
+
+<a href="#inicio">
+Inicio
+</a>
+
+<a href="#acerca">
+Acerca de
+</a>
+
+<a href="#libro">
+El libro
+</a>
+
+<a
+href="#libro"
+class="nav-cta"
+>
+
+Comprar
+
+</a>
+
+</nav>
+
+
+<button
+class="cart-button"
+onclick="abrirCarrito()"
+aria-label="Abrir carrito"
+>
+
+🛒
+
+<span
+class="cart-number"
+id="cartNumber"
+>
+0
+</span>
+
+</button>
+
+
+<button
+class="menu-btn"
+id="menuBtn"
+>
+
+☰
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- ===============================
+     HERO
+================================ -->
+
+<section
+class="hero"
+id="inicio"
+>
+
+<div class="container hero-grid">
+
+
+<div>
+
+<div class="eyebrow">
+
+Una lectura para volver a empezar
+
+</div>
+
+
+<h1>
+
+Tu historia todavía puede ser
+
+<span>
+restaurada.
+</span>
+
+</h1>
+
+
+<p class="lead">
+
+Descubre
+
+<strong>
+13 Claves para Ser Restaurado
+</strong>,
+
+una guía práctica y espiritual para sanar,
+renovar tu mente y avanzar hacia una vida
+con propósito.
+
+</p>
+
+
+<div class="hero-actions">
+
+<button
+class="btn btn-primary"
+onclick="agregarLibro()"
+>
+
+Añadir al carrito · $7.99
+
+</button>
+
+
+<a
+href="#acerca"
+class="btn btn-secondary"
+>
+
+Conocer el libro
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<div class="book">
+
+<img
+src="Imagen1.jpeg"
+alt="13 Claves Para Ser Restaurado"
+>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ===============================
+     ACERCA
+================================ -->
+
+<section id="acerca">
+
+<div class="container">
+
+<div class="about-box">
+
+<div class="eyebrow">
+
+Acerca del libro
+
+</div>
+
+
+<h2>
+
+13 Claves para Ser Restaurado
+
+</h2>
+
+
+<p>
+
+<strong>
+13 Claves para Ser Restaurado
+</strong>
+
+es una guía práctica y espiritual
+para quienes desean sanar,
+renovar su mente y avanzar
+hacia una vida con propósito.
+
+A través de 13 claves,
+invita a dejar atrás las heridas,
+fortalecer la fe,
+descubrir la identidad
+y caminar hacia una
+restauración integral.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ===============================
+     BENEFICIOS
+================================ -->
+
+<section class="benefits">
+
+<div class="container">
+
+
+<div class="section-head">
+
+<div class="eyebrow">
+
+Más que un libro
+
+</div>
+
+<h2>
+
+Un recorrido hacia la restauración
+
+</h2>
+
+<p>
+
+Una lectura enfocada en sanar,
+fortalecer la fe,
+renovar la mente y avanzar
+con propósito.
+
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+✦ 13 claves prácticas
+</h3>
+
+<p>
+
+Un recorrido estructurado
+para avanzar paso a paso
+hacia la restauración.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+♡ Sanar y renovar
+</h3>
+
+<p>
+
+Reflexiones para dejar atrás
+heridas y fortalecer
+la mente y la fe.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+↗ Vivir con propósito
+</h3>
+
+<p>
+
+Descubre tu identidad
+y avanza hacia
+una restauración integral.
+
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ===============================
+     PRODUCTO
+================================ -->
+
+<section id="libro">
+
+<div class="container product-grid">
+
+
+<div class="product-img">
+
+<img
+src="Imagen1.jpeg"
+alt="Portada del libro"
+>
+
+</div>
+
+
+<div class="product-info">
+
+<div class="eyebrow">
+
+eBook disponible
+
+</div>
+
+
+<h2>
+
+13 Claves Para Ser Restaurado
+
+</h2>
+
+
+<div class="author">
+
+Dra. Ruth Zenaida Manzanares
+
+</div>
+
+
+<p>
+
+Una guía práctica y espiritual
+para quienes desean sanar,
+renovar su mente
+y avanzar hacia una vida
+con propósito.
+
+</p>
+
+
+<ul class="checklist">
+
+<li>
+13 claves enfocadas en restauración.
+</li>
+
+<li>
+Lectura práctica y espiritual.
+</li>
+
+<li>
+Formato eBook digital.
+</li>
+
+<li>
+Acceso desde teléfono,
+tablet o computadora.
+</li>
+
+<li>
+Pago mediante PayPal
+o transferencia bancaria.
+</li>
+
+</ul>
+
+
+<div class="price">
+
+<strong>
+$7.99
+</strong>
+
+<span>
+USD
+</span>
+
+</div>
+
+
+<button
+class="btn btn-primary"
+onclick="agregarLibro()"
+>
+
+Añadir al carrito
+
+</button>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ===============================
+     CTA
+================================ -->
+
+<section>
+
+<div class="container">
+
+<div class="cta">
+
+<h2>
+
+Es tiempo de restauración.
+
+</h2>
+
+<p>
+
+Obtén tu copia digital
+de 13 Claves para Ser Restaurado
+y comienza este camino
+de renovación,
+fe, identidad y propósito.
+
+</p>
+
+<button
+class="btn"
+onclick="agregarLibro()"
+>
+
+Añadir al carrito · $7.99 USD
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ===============================
+     FOOTER
+================================ -->
+
+<footer>
+
+<div class="container footer-grid">
+
+
+<div>
+
+<h3>
+Tiempo de Restauración
+</h3>
+
+<p>
+
+Tienda oficial del eBook
+13 Claves Para Ser Restaurado.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Navegación
+</h4>
+
+<p>
+
+<a href="#inicio">
+Inicio
+</a>
+
+<br>
+
+<a href="#acerca">
+Acerca de
+</a>
+
+<br>
+
+<a href="#libro">
+Comprar
+</a>
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Contacto
+</h4>
+
+<p>
+
+<a
+href="https://wa.me/50487439169"
+target="_blank"
+>
+
++504 8743-9169
+
+</a>
+
+<br><br>
+
+<a
+href="mailto:ruth.manzanares2016@gmail.com"
+>
+
+ruth.manzanares2016@gmail.com
+
+</a>
+
+</p>
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+<!-- ===============================
+     CARRITO
+================================ -->
+
+<div
+class="overlay"
+id="cartOverlay"
+>
+
+<aside class="cart">
+
+
+<div class="cart-header">
+
+<h2>
+Tu carrito
+</h2>
+
+<button
+class="circle"
+onclick="cerrarCarrito()"
+>
+
+×
+
+</button>
+
+</div>
+
+
+<div
+class="cart-items"
+id="cartItems"
+>
+</div>
+
+
+<div class="cart-footer">
+
+<div class="total">
+
+<span>
+Total
+</span>
+
+<span id="cartTotal">
+$0.00
+</span>
+
+</div>
+
+
+<button
+class="checkout"
+id="checkoutButton"
+onclick="abrirPago()"
+disabled
+>
+
+Continuar al pago
+
+</button>
+
+</div>
+
+
+</aside>
+
+</div>
+
+
+
+<!-- ===============================
+     CHECKOUT
+================================ -->
+
+<div
+class="payment-modal"
+id="paymentModal"
+>
+
+<div class="payment-box">
+
+
+<div class="payment-top">
+
+<div>
+
+<div class="eyebrow">
+
+Pago seguro
+
+</div>
+
+<h2>
+
+Finaliza tu compra
+
+</h2>
+
+</div>
+
+
+<button
+class="circle"
+onclick="cerrarPago()"
+>
+
+×
+
+</button>
+
+</div>
+
+
+
+<div class="checkout-product">
+
+<div>
+
+<strong>
+
+13 Claves Para Ser Restaurado
+
+</strong>
+
+<br>
+
+<small>
+eBook digital
+</small>
+
+</div>
+
+<strong>
+$7.99 USD
+</strong>
+
+</div>
+
+
+
+<!-- PAYPAL -->
+
+<div class="payment-method">
+
+<h3>
+
+PayPal / Tarjeta
+
+</h3>
+
+<p style="
+color:var(--gris);
+line-height:1.6;
+">
+
+Paga de forma segura mediante PayPal.
+Dependiendo de la disponibilidad
+para el comprador,
+PayPal también puede mostrar
+opciones para pagar con
+tarjeta de débito o crédito.
+
+</p>
+
+
+<div id="paypal-loading">
+
+Cargando PayPal...
+
+</div>
+
+
+<div
+id="paypal-button-container"
+>
+</div>
+
+
+<div
+class="payment-status"
+id="paymentStatus"
+>
+</div>
+
+</div>
+
+
+
+<!-- TRANSFERENCIA -->
+
+<div class="payment-method">
+
+<h3>
+
+Transferencia bancaria
+
+</h3>
+
+
+<button
+class="bank-button"
+onclick="mostrarBancos()"
+>
+
+🏦 Ver información para transferencia
+
+</button>
+
+
+<div
+class="bank-info"
+id="bankInfo"
+>
+
+<strong>
+Transferencia bancaria
+</strong>
+
+<br><br>
+
+Aquí debes colocar posteriormente
+las cuentas de BAC,
+Ficohsa,
+Atlántida,
+Banpaís
+o los bancos que utilizarán.
+
+<br><br>
+
+<strong>
+Total:
+$7.99 USD
+</strong>
+
+<br><br>
+
+Después de realizar la transferencia,
+envía el comprobante vía WhatsApp:
+
+<br><br>
+
+<a
+href="https://wa.me/50487439169?text=Hola%2C%20realic%C3%A9%20el%20pago%20del%20ebook%2013%20Claves%20Para%20Ser%20Restaurado."
+target="_blank"
+style="
+color:var(--verde);
+font-weight:800;
+"
+>
+
+Enviar comprobante por WhatsApp →
+
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/*
+===========================================
+CONFIGURACIÓN
+===========================================
+
+CLIENT ID:
+Es público y puede estar
+en GitHub Pages.
+
+API_URL:
+Será la dirección que te dé Vercel.
+
+*/
+
+const PAYPAL_CLIENT_ID =
+"TU_CLIENT_ID_DE_PAYPAL";
+
+
+const API_URL =
+"https://TU-PROYECTO.vercel.app";
+
+
+const PRODUCTO = {
+
+id:"ebook-13-claves",
+
+nombre:
+"13 Claves Para Ser Restaurado",
+
+precio:7.99,
+
+imagen:"Imagen1.jpeg"
+
+};
+
+
+let carrito =
+JSON.parse(
+localStorage.getItem(
+"carritoTiempoRestauracion"
+)
+) || [];
+
+
+
+/* ===============================
+   CARRITO
+================================ */
+
+function guardarCarrito(){
+
+localStorage.setItem(
+
+"carritoTiempoRestauracion",
+
+JSON.stringify(carrito)
+
+);
+
+}
+
+
+function agregarLibro(){
+
+/*
+Al ser un eBook,
+no tiene sentido comprar
+2 copias digitales en la misma orden.
+
+Por eso se mantiene
+una sola unidad.
+*/
+
+const existe =
+carrito.find(
+item => item.id === PRODUCTO.id
+);
+
+
+if(!existe){
+
+carrito.push({
+
+...PRODUCTO,
+
+cantidad:1
+
+});
+
+}
+
+
+guardarCarrito();
+
+actualizarCarrito();
+
+abrirCarrito();
+
+}
+
+
+function eliminarProducto(){
+
+carrito = [];
+
+guardarCarrito();
+
+actualizarCarrito();
+
+}
+
+
+function actualizarCarrito(){
+
+const items =
+document.getElementById(
+"cartItems"
+);
+
+const numero =
+document.getElementById(
+"cartNumber"
+);
+
+const total =
+document.getElementById(
+"cartTotal"
+);
+
+const checkout =
+document.getElementById(
+"checkoutButton"
+);
+
+
+numero.textContent =
+carrito.length;
+
+
+if(carrito.length === 0){
+
+items.innerHTML = `
+
+<div class="empty">
+
+<div
+style="
+font-size:3rem;
+"
+>
+
+🛒
+
+</div>
+
+<h3>
+
+Tu carrito está vacío
+
+</h3>
+
+<p>
+
+Añade el eBook
+para comenzar tu compra.
+
+</p>
+
+</div>
+
+`;
+
+total.textContent =
+"$0.00";
+
+checkout.disabled =
+true;
+
+return;
+
+}
+
+
+items.innerHTML = `
+
+<div class="cart-item">
+
+<img
+src="${PRODUCTO.imagen}"
+alt="${PRODUCTO.nombre}"
+>
+
+<div>
+
+<h4>
+
+${PRODUCTO.nombre}
+
+</h4>
+
+<div class="item-price">
+
+$${PRODUCTO.precio.toFixed(2)}
+USD
+
+</div>
+
+<p
+style="
+font-size:.82rem;
+color:var(--gris);
+margin:5px 0;
+"
+>
+
+eBook digital
+
+</p>
+
+<button
+class="remove"
+onclick="eliminarProducto()"
+>
+
+Eliminar del carrito
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+
+total.textContent =
+"$" +
+PRODUCTO.precio.toFixed(2);
+
+
+checkout.disabled =
+false;
+
+}
+
+
+
+function abrirCarrito(){
+
+document
+.getElementById(
+"cartOverlay"
+)
+.classList
+.add("active");
+
+
+document.body
+.classList
+.add("no-scroll");
+
+}
+
+
+function cerrarCarrito(){
+
+document
+.getElementById(
+"cartOverlay"
+)
+.classList
+.remove("active");
+
+
+document.body
+.classList
+.remove("no-scroll");
+
+}
+
+
+
+document
+.getElementById(
+"cartOverlay"
+)
+.addEventListener(
+
+"click",
+
+function(event){
+
+if(event.target === this){
+
+cerrarCarrito();
+
+}
+
+}
+
+);
+
+
+
+/* ===============================
+   CHECKOUT
+================================ */
+
+function abrirPago(){
+
+if(carrito.length === 0){
+return;
+}
+
+
+cerrarCarrito();
+
+
+document
+.getElementById(
+"paymentModal"
+)
+.classList
+.add("active");
+
+
+document.body
+.classList
+.add("no-scroll");
+
+}
+
+
+function cerrarPago(){
+
+document
+.getElementById(
+"paymentModal"
+)
+.classList
+.remove("active");
+
+
+document.body
+.classList
+.remove("no-scroll");
+
+}
+
+
+
+/* ===============================
+   TRANSFERENCIA
+================================ */
+
+function mostrarBancos(){
+
+document
+.getElementById(
+"bankInfo"
+)
+.classList
+.toggle("active");
+
+}
+
+
+
+/* ===============================
+   PAYPAL
+================================ */
+
+function cargarPayPal(){
+
+if(
+PAYPAL_CLIENT_ID ===
+"TU_CLIENT_ID_DE_PAYPAL"
+){
+
+document
+.getElementById(
+"paypal-loading"
+)
+.innerHTML = `
+
+<strong>
+PayPal pendiente de configurar.
+</strong>
+
+<br><br>
+
+Coloca tu Client ID
+en la variable
+PAYPAL_CLIENT_ID.
+
+`;
+
+return;
+
+}
+
+
+const script =
+document.createElement(
+"script"
+);
+
+
+script.src =
+
+"https://www.paypal.com/sdk/js" +
+
+"?client-id=" +
+
+encodeURIComponent(
+PAYPAL_CLIENT_ID
+) +
+
+"&currency=USD" +
+
+"&intent=capture" +
+
+"&components=buttons";
+
+
+script.onload =
+iniciarBotonesPayPal;
+
+
+script.onerror =
+function(){
+
+document
+.getElementById(
+"paypal-loading"
+)
+textContent =
+"No fue posible cargar PayPal.";
+
+};
+
+
+document.head
+.appendChild(script);
+
+}
+
+
+
+function iniciarBotonesPayPal(){
+
+document
+.getElementById(
+"paypal-loading"
+)
+.style.display =
+"none";
+
+
+paypal.Buttons({
+
+
+style:{
+
+layout:"vertical",
+
+shape:"pill",
+
+label:"paypal"
+
+},
+
+
+
+/*
+ORDEN CREADA EN VERCEL.
+
+El navegador NO decide
+que el producto cuesta $7.99.
+
+El backend sabe cuál es
+el precio real.
+*/
+
+createOrder:
+
+async function(){
+
+try{
+
+const response =
+await fetch(
+
+API_URL +
+"/api/create-order",
+
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json"
+
+},
+
+body:
+JSON.stringify({
+
+productId:
+PRODUCTO.id
+
+})
+
+}
+
+);
+
+
+const data =
+await response.json();
+
+
+if(!response.ok){
+
+throw new Error(
+
+data.error ||
+"No se pudo crear la orden."
+
+);
+
+}
+
+
+return data.id;
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+
+"No se pudo iniciar el pago. Intenta nuevamente."
+
+);
+
+throw error;
+
+}
+
+},
+
+
+
+/*
+DESPUÉS DE QUE EL CLIENTE
+APRUEBA EL PAGO,
+VERCEL LO CAPTURA.
+*/
+
+onApprove:
+
+async function(data){
+
+const status =
+document.getElementById(
+"paymentStatus"
+);
+
+
+status.classList.add(
+"active"
+);
+
+
+status.innerHTML =
+
+"Procesando tu pago...";
+
+
+try{
+
+const response =
+await fetch(
+
+API_URL +
+
+"/api/capture-order" +
+
+"?orderID=" +
+
+encodeURIComponent(
+data.orderID
+),
+
+{
+
+method:"POST"
+
+}
+
+);
+
+
+const details =
+await response.json();
+
+
+if(!response.ok){
+
+throw new Error(
+
+details.error ||
+"No se pudo capturar el pago."
+
+);
+
+}
+
+
+if(
+details.status ===
+"COMPLETED"
+){
+
+status.innerHTML = `
+
+<strong>
+✓ Pago completado correctamente
+</strong>
+
+<br><br>
+
+Número de orden:
+
+<strong>
+${details.id}
+</strong>
+
+<br><br>
+
+Gracias por adquirir
+<strong>
+13 Claves Para Ser Restaurado.
+</strong>
+
+<br><br>
+
+Conserva este número
+como comprobante de compra.
+
+`;
+
+
+/*
+Limpiar carrito
+únicamente después
+de un pago confirmado.
+*/
+
+carrito = [];
+
+guardarCarrito();
+
+actualizarCarrito();
+
+
+}
+
+else{
+
+status.innerHTML =
+
+"PayPal respondió con estado: " +
+details.status;
+
+}
+
+
+}
+
+catch(error){
+
+console.error(error);
+
+
+status.innerHTML = `
+
+<strong>
+No pudimos confirmar el pago.
+</strong>
+
+<br><br>
+
+Si PayPal realizó un cargo,
+no vuelvas a pagar.
+
+Contáctanos por WhatsApp
+para verificar tu orden.
+
+`;
+
+}
+
+},
+
+
+
+onCancel:
+
+function(){
+
+console.log(
+"Pago cancelado por el cliente."
+);
+
+},
+
+
+
+onError:
+
+function(error){
+
+console.error(
+"Error de PayPal:",
+error
+);
+
+
+const status =
+document.getElementById(
+"paymentStatus"
+);
+
+
+status.classList.add(
+"active"
+);
+
+
+status.innerHTML = `
+
+No se pudo procesar
+el pago mediante PayPal.
+
+<br><br>
+
+Puedes intentarlo nuevamente
+o comunicarte al
+
+<a
+href="https://wa.me/50487439169"
+target="_blank"
+style="
+color:var(--verde);
+font-weight:800;
+"
+>
+
+WhatsApp +504 8743-9169
+
+</a>
+
+`;
+
+}
+
+
+})
+.render(
+"#paypal-button-container"
+);
+
+}
+
+
+
+/* ===============================
+   MENÚ MÓVIL
+================================ */
+
+const menuBtn =
+document.getElementById(
+"menuBtn"
+);
+
+
+const navlinks =
+document.getElementById(
+"navlinks"
+);
+
+
+menuBtn.addEventListener(
+
+"click",
+
+function(){
+
+navlinks
+.classList
+.toggle("open");
+
+}
+
+);
+
+
+
+/* ===============================
+   INICIAR
+================================ */
+
+actualizarCarrito();
+
+cargarPayPal();
+
+</script>
+
+
+</body>
+</html>
