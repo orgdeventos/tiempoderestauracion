@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gracias por tu compra | Tiempo de Restauración</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --azul: #071c2f;
+      --verde: #1f5b44;
+      --verde-claro: #2f765b;
+      --gris: #68757d;
+      --fondo: #f5f8f6;
+      --blanco: #ffffff;
+      --borde: rgba(7, 28, 47, 0.12);
+      --sombra: 0 25px 70px rgba(7, 28, 47, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+
+      font-family: "DM Sans", Arial, sans-serif;
+
+      color: var(--azul);
+
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          rgba(31, 91, 68, 0.15),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #f9fcfa,
+          #ffffff
+        );
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* CONTACTO */
+
+    .contact-bar {
+      background: var(--verde);
+      color: white;
+    }
+
+    .contact-content {
+      min-height: 42px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      flex-wrap: wrap;
+
+      gap: 10px 25px;
+
+      padding: 8px 20px;
+
+      font-size: 0.88rem;
+    }
+
+    /* HEADER */
+
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 40px));
+
+      min-height: 90px;
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      width: 155px;
+      height: 78px;
+      object-fit: contain;
+    }
+
+    /* CONTENIDO */
+
+    main {
+      flex: 1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 70px 20px;
+    }
+
+    .success-card {
+      width: min(680px, 100%);
+
+      padding: 55px 45px;
+
+      background: white;
+
+      border: 1px solid var(--borde);
+      border-radius: 30px;
+
+      box-shadow: var(--sombra);
+
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 78px;
+      height: 78px;
+
+      margin: 0 auto 25px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: var(--verde);
+
+      color: white;
+
+      font-size: 2.2rem;
+
+      box-shadow:
+        0 15px 35px rgba(31, 91, 68, 0.22);
+    }
+
+    .eyebrow {
+      color: var(--verde);
+
+      font-size: 0.8rem;
+      font-weight: 800;
+
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 12px 0 18px;
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(2.5rem, 6vw, 4rem);
+
+      line-height: 1.05;
+    }
+
+    .description {
+      max-width: 540px;
+
+      margin: 0 auto;
+
+      color: var(--gris);
+
+      font-size: 1.03rem;
+      line-height: 1.8;
+    }
+
+    .book-box {
+      margin: 30px 0;
+
+      padding: 20px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 18px;
+
+      border-radius: 18px;
+
+      background: var(--fondo);
+
+      text-align: left;
+    }
+
+    .book-box img {
+      width: 75px;
+      height: 100px;
+
+      object-fit: cover;
+
+      border-radius: 9px;
+
+      box-shadow:
+        0 8px 20px rgba(7, 28, 47, 0.15);
+    }
+
+    .book-title {
+      font-weight: 800;
+
+      margin-bottom: 5px;
+    }
+
+    .book-author {
+      color: var(--verde);
+
+      font-size: 0.9rem;
+    }
+
+    .access-box {
+      margin: 25px 0;
+
+      padding: 18px;
+
+      border-radius: 16px;
+
+      background: #f1f7f4;
+
+      color: #36594a;
+
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .access-box strong {
+      color: var(--verde);
+    }
+
+    .download-btn {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 10px;
+
+      padding: 17px 25px;
+
+      border-radius: 999px;
+
+      background: var(--verde);
+
+      color: white;
+
+      font-size: 1rem;
+      font-weight: 800;
+
+      box-shadow:
+        0 14px 30px rgba(31, 91, 68, 0.22);
+
+      transition: 0.25s;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+
+      background: var(--verde-claro);
+    }
+
+    .support {
+      margin-top: 26px;
+
+      color: var(--gris);
+
+      font-size: 0.9rem;
+
+      line-height: 1.7;
+    }
+
+    .support a {
+      color: var(--verde);
+      font-weight: 700;
+    }
+
+    .back-home {
+      display: inline-block;
+
+      margin-top: 20px;
+
+      color: var(--azul);
+
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 25px 20px;
+
+      background: #061724;
+
+      color: #8fa2ae;
+
+      text-align: center;
+
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 560px) {
+      .success-card {
+        padding: 38px 22px;
+      }
+
+      .book-box {
+        align-items: flex-start;
+      }
+
+      .contact-content {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .logo {
+        width: 125px;
+        height: 68px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTACTO -->
+
+  <div class="contact-bar">
+
+    <div class="contact-content">
+
+      <a
+        href="https://wa.me/50487439169"
+        target="_blank"
+      >
+        💬 +504 8743-9169
+      </a>
+
+      <a
+        href="mailto:ruth.manzanares2016@gmail.com"
+      >
+        ✉️ ruth.manzanares2016@gmail.com
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="nav">
+
+      <a href="index.html">
+
+        <img
+          src="Logo1.png"
+          class="logo"
+          alt="Tiempo de Restauración"
+        >
+
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- CONTENIDO -->
+
+  <main>
+
+    <div class="success-card">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+
+      <div class="eyebrow">
+        Compra realizada
+      </div>
+
+
+      <h1>
+        ¡Gracias por tu compra!
+      </h1>
+
+
+      <p class="description">
+
+        Gracias por adquirir
+
+        <strong>
+          13 Claves Para Ser Restaurado.
+        </strong>
+
+        Esperamos que este libro sea una herramienta
+        de crecimiento, renovación y restauración
+        para tu vida.
+
+      </p>
+
+
+      <div class="book-box">
+
+        <img
+          src="Imagen1.jpeg"
+          alt="13 Claves Para Ser Restaurado"
+        >
+
+        <div>
+
+          <div class="book-title">
+            13 Claves Para Ser Restaurado
+          </div>
+
+          <div class="book-author">
+            Dra. Ruth Zenaida Manzanares
+          </div>
+
+          <div
+            style="
+              margin-top:6px;
+              color:#68757d;
+              font-size:.85rem;
+            "
+          >
+            eBook digital
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="access-box">
+
+        🔐 <strong>Acceso privado</strong>
+
+        <br><br>
+
+        El eBook se encuentra protegido mediante
+        Google Drive.
+
+        Si todavía no tienes acceso,
+        asegúrate de haber proporcionado el correo
+        de Google que utilizarás para leer el libro.
+
+      </div>
+
+
+      <!--
+        IMPORTANTE:
+
+        CAMBIA EL LINK DE ABAJO POR
+        TU LINK REAL DE GOOGLE DRIVE
+      -->
+
+      <a
+        href="https://drive.google.com/file/d/15ChhHFMY8FU9ctMy6HNKaoRm31vq7U-o/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="download-btn"
+      >
+        📖 Acceder a mi eBook
+      </a>
+
+
+      <div class="support">
+
+        ¿No puedes acceder al libro?
+
+        <br>
+
+        Escríbenos por
+
+        <a
+          href="https://wa.me/50487439169?text=Hola%2C%20realic%C3%A9%20la%20compra%20de%2013%20Claves%20Para%20Ser%20Restaurado%20y%20necesito%20ayuda%20con%20el%20acceso."
+          target="_blank"
+        >
+          WhatsApp
+        </a>
+
+        y te ayudaremos con tu acceso.
+
+      </div>
+
+
+      <a
+        href="index.html"
+        class="back-home"
+      >
+        ← Volver a Tiempo de Restauración
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    © <span id="year"></span>
+    Tiempo de Restauración ·
+    Todos los derechos reservados.
+
+  </footer>
+
+
+  <script>
+
+    document
+      .getElementById("year")
+      .textContent =
+      new Date().getFullYear();
+
+  </script>
+
+</body>
+</html>
