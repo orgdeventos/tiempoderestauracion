@@ -8,7 +8,7 @@
 
   <meta
     name="description"
-    content="Tienda oficial del eBook 13 Claves Para Ser Restaurado."
+    content="Tienda oficial del eBook 13 Claves Para Ser Restaurado de la Dra. Ruth Zenaida Manzanares."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,8 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
     rel="stylesheet"
   />
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     :root {
@@ -30,6 +32,8 @@
       --gris: #68757d;
       --borde: rgba(7, 28, 47, 0.12);
       --sombra: 0 22px 55px rgba(7, 28, 47, 0.12);
+      --sombra-grande: 0 30px 90px rgba(7, 28, 47, 0.16);
+      --dorado: #b78b43;
       --max: 1180px;
     }
 
@@ -63,14 +67,62 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input,
+    textarea {
       font: inherit;
+    }
+
+    button {
       cursor: pointer;
     }
 
     .container {
       width: min(var(--max), calc(100% - 40px));
       margin: auto;
+    }
+
+    /* =========================
+       ANIMACIONES
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-35px);
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .reveal-left.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(35px);
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(.2,.75,.25,1);
+    }
+
+    .reveal-right.show {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     /* =========================
@@ -173,6 +225,7 @@
 
     .cart-button:hover {
       background: #e9efec;
+      transform: translateY(-2px);
     }
 
     .cart-number {
@@ -195,6 +248,111 @@
       border: 0;
       background: transparent;
       font-size: 1.6rem;
+    }
+
+    /* =========================
+       AUTORA
+    ========================== */
+
+    .author-intro {
+      position: relative;
+      padding: 60px 0 70px;
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(183, 139, 67, 0.11),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #fffdf9 0%,
+          #ffffff 100%
+        );
+    }
+
+    .author-intro-grid {
+      display: grid;
+      grid-template-columns: 1.28fr 0.72fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .author-feature-image {
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: var(--sombra-grande);
+    }
+
+    .author-feature-image img {
+      width: 100%;
+      transition: transform 1s ease;
+    }
+
+    .author-feature-image:hover img {
+      transform: scale(1.025);
+    }
+
+    .author-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--dorado);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.17em;
+    }
+
+    .author-label::before {
+      content: "";
+      width: 35px;
+      height: 2px;
+      background: var(--dorado);
+    }
+
+    .author-feature-content h2 {
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.3rem, 4.4vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .author-feature-content h2 span {
+      color: var(--verde);
+    }
+
+    .author-name {
+      margin: 18px 0 5px;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .author-role {
+      color: var(--dorado);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+    }
+
+    .author-feature-content p {
+      margin: 24px 0 0;
+      color: var(--gris);
+      line-height: 1.85;
+    }
+
+    .author-quote {
+      margin-top: 28px;
+      padding: 20px 22px 20px 25px;
+      border-left: 3px solid var(--verde);
+      border-radius: 0 14px 14px 0;
+      background: #f3f7f5;
+      color: #3d5a4e;
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
 
     /* =========================
@@ -282,12 +440,11 @@
     .btn-primary {
       background: var(--verde);
       color: white;
-      box-shadow: 0 14px 30px rgba(31, 91, 68, 0.2);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
       background: var(--verde-2);
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
@@ -301,12 +458,7 @@
       margin: auto;
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(7, 28, 47, 0.22);
-      transition: 0.4s;
-    }
-
-    .book:hover {
-      transform: translateY(-8px) rotate(0.5deg);
+      box-shadow: var(--sombra-grande);
     }
 
     /* =========================
@@ -317,36 +469,27 @@
       padding: 90px 0;
     }
 
-    /* =========================
-       ACERCA
-    ========================== */
-
     .about-box {
       max-width: 920px;
       margin: auto;
       padding: 50px;
       border: 1px solid var(--borde);
       border-radius: 30px;
-      background:
-        linear-gradient(
-          135deg,
-          white,
-          #f5f9f7
-        );
+      background: linear-gradient(135deg, white, #f5f9f7);
       box-shadow: var(--sombra);
       text-align: center;
     }
 
-    .about-box h2 {
-      margin: 10px 0 20px;
+    .about-box h2,
+    .section-head h2 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-size: clamp(2.3rem, 4vw, 3.5rem);
     }
 
-    .about-box p {
+    .about-box p,
+    .section-head p {
       color: var(--gris);
-      font-size: 1.05rem;
-      line-height: 1.9;
+      line-height: 1.8;
     }
 
     /* =========================
@@ -361,16 +504,6 @@
       max-width: 700px;
       margin: 0 auto 45px;
       text-align: center;
-    }
-
-    .section-head h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2.3rem, 4vw, 3.5rem);
-    }
-
-    .section-head p {
-      color: var(--gris);
-      line-height: 1.8;
     }
 
     .cards {
@@ -463,34 +596,259 @@
       color: var(--gris);
     }
 
-    /* AVISO DE ENTREGA */
-
     .delivery-note {
       margin: 0 0 25px;
       padding: 16px 18px;
-
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-
-      border: 1px solid rgba(31, 91, 68, 0.18);
       border-radius: 16px;
-
       background: #f1f7f4;
-
       color: #36594a;
-
       line-height: 1.6;
       font-size: 0.92rem;
     }
 
-    .delivery-note strong {
-      color: var(--verde);
+    /* =========================
+       RESEÑAS
+    ========================== */
+
+    .reviews-section {
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff,
+          #f7faf8
+        );
     }
 
-    .delivery-icon {
-      flex: 0 0 auto;
-      font-size: 1.25rem;
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .review-form-box {
+      position: sticky;
+      top: 125px;
+      padding: 30px;
+      border-radius: 24px;
+      border: 1px solid var(--borde);
+      background: white;
+      box-shadow: var(--sombra);
+    }
+
+    .review-form-box h3 {
+      margin: 0 0 8px;
+      font-family: "Playfair Display", serif;
+      font-size: 2rem;
+    }
+
+    .review-form-box > p {
+      margin: 0 0 24px;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      outline: none;
+      background: #fbfcfb;
+      color: var(--azul);
+      transition: 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: rgba(31, 91, 68, 0.55);
+      box-shadow: 0 0 0 4px rgba(31, 91, 68, 0.08);
+      background: white;
+    }
+
+    textarea.form-control {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .stars-input {
+      display: flex;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .star-input {
+      border: 0;
+      background: transparent;
+      padding: 2px;
+      font-size: 1.8rem;
+      color: #d6d6d6;
+      transition: 0.15s;
+    }
+
+    .star-input.active,
+    .star-input:hover {
+      color: #d2a23d;
+      transform: scale(1.05);
+    }
+
+    .review-submit {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      padding: 15px;
+      background: var(--verde);
+      color: white;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .review-submit:hover {
+      background: var(--verde-2);
+    }
+
+    .review-submit:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    .form-message {
+      display: none;
+      margin-top: 15px;
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .form-message.success {
+      display: block;
+      background: #edf7f1;
+      color: #28583f;
+    }
+
+    .form-message.error {
+      display: block;
+      background: #fff1f0;
+      color: #8f3833;
+    }
+
+    .reviews-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .review-card {
+      padding: 25px;
+      border: 1px solid var(--borde);
+      border-radius: 22px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(7, 28, 47, 0.06);
+      animation: reviewIn 0.4s ease;
+    }
+
+    @keyframes reviewIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .review-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .review-avatar {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--azul), var(--verde));
+      color: white;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .review-name {
+      font-weight: 800;
+    }
+
+    .review-date {
+      margin-top: 3px;
+      color: var(--gris);
+      font-size: 0.8rem;
+    }
+
+    .review-stars {
+      color: #d2a23d;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    .review-comment {
+      margin: 18px 0 0;
+      color: #4f5e66;
+      line-height: 1.75;
+      white-space: pre-wrap;
+    }
+
+    .reviews-empty,
+    .reviews-loading {
+      padding: 35px;
+      border: 1px dashed var(--borde);
+      border-radius: 20px;
+      color: var(--gris);
+      text-align: center;
+      background: rgba(255,255,255,.7);
+    }
+
+    .reviews-summary {
+      margin-bottom: 20px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--azul);
+      color: white;
+    }
+
+    .reviews-summary strong {
+      font-size: 1.8rem;
+    }
+
+    .reviews-summary .summary-stars {
+      color: #f0c15d;
+      letter-spacing: 2px;
+      margin-left: 8px;
+    }
+
+    .reviews-summary small {
+      display: block;
+      margin-top: 4px;
+      color: #abc0cc;
     }
 
     /* =========================
@@ -500,12 +858,7 @@
     .cta {
       padding: 68px 28px;
       border-radius: 34px;
-      background:
-        linear-gradient(
-          135deg,
-          var(--verde),
-          #174532
-        );
+      background: linear-gradient(135deg, var(--verde), #174532);
       color: white;
       text-align: center;
     }
@@ -532,14 +885,8 @@
       max-width: 620px;
       margin: 22px auto 0;
       padding: 14px 18px;
-
-      border: 1px solid rgba(255,255,255,0.18);
       border-radius: 14px;
-
       background: rgba(255,255,255,0.1);
-
-      color: rgba(255,255,255,0.9);
-
       font-size: 0.9rem;
       line-height: 1.6;
     }
@@ -549,7 +896,7 @@
     ========================== */
 
     footer {
-      padding: 48px 0;
+      padding: 48px 0 24px;
       background: #061724;
       color: white;
     }
@@ -565,6 +912,25 @@
       color: #9fb0bb;
       font-size: 0.93rem;
       line-height: 1.8;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .footer-credit {
+      margin-top: 35px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: #8296a3;
+      font-size: 0.84rem;
+      line-height: 1.7;
+    }
+
+    .footer-credit strong {
+      color: #ffffff;
+      font-weight: 600;
     }
 
     /* =========================
@@ -680,13 +1046,9 @@
     .cart-delivery {
       margin-bottom: 16px;
       padding: 13px 14px;
-
       border-radius: 13px;
-
       background: #f1f7f4;
-
       color: #416052;
-
       font-size: 0.84rem;
       line-height: 1.55;
     }
@@ -770,20 +1132,11 @@
     .access-info {
       margin-bottom: 18px;
       padding: 16px 18px;
-
-      border: 1px solid rgba(31,91,68,0.18);
       border-radius: 15px;
-
       background: #f1f7f4;
-
       color: #3b5e50;
-
       font-size: 0.9rem;
       line-height: 1.65;
-    }
-
-    .access-info strong {
-      color: var(--verde);
     }
 
     .payment-method {
@@ -793,12 +1146,7 @@
       border-radius: 20px;
     }
 
-    .payment-method h3 {
-      margin: 0 0 7px;
-    }
-
     .payment-description {
-      margin: 0 0 18px;
       color: var(--gris);
       font-size: 0.92rem;
       line-height: 1.6;
@@ -841,6 +1189,21 @@
     /* =========================
        RESPONSIVE
     ========================== */
+
+    @media (max-width: 1000px) {
+      .author-intro-grid,
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-form-box {
+        position: static;
+      }
+
+      .author-feature-content {
+        text-align: center;
+      }
+    }
 
     @media (max-width: 900px) {
       .hero-grid,
@@ -934,6 +1297,15 @@
         padding: 30px 22px;
       }
 
+      .review-form-box,
+      .review-card {
+        padding: 22px;
+      }
+
+      .review-top {
+        flex-direction: column;
+      }
+
       .payment-box {
         padding: 22px;
       }
@@ -961,9 +1333,7 @@
         💬 WhatsApp: +504 8743-9169
       </a>
 
-      <a
-        href="mailto:ruth.manzanares2016@gmail.com"
-      >
+      <a href="mailto:ruth.manzanares2016@gmail.com">
         ✉️ ruth.manzanares2016@gmail.com
       </a>
 
@@ -1000,12 +1370,20 @@
             Inicio
           </a>
 
+          <a href="#autora">
+            La autora
+          </a>
+
           <a href="#acerca">
             Acerca de
           </a>
 
           <a href="#libro">
             El libro
+          </a>
+
+          <a href="#resenas">
+            Reseñas
           </a>
 
           <a
@@ -1053,6 +1431,87 @@
 
   <main>
 
+    <!-- AUTORA -->
+
+    <section
+      class="author-intro"
+      id="autora"
+    >
+
+      <div class="container author-intro-grid">
+
+        <div class="author-feature-image reveal-left">
+
+          <img
+            src="reseña1.jpeg"
+            alt="Dra. Ruth Zenaida Manzanares"
+          >
+
+        </div>
+
+
+        <div class="author-feature-content reveal-right">
+
+          <div class="author-label">
+            Conoce a la autora
+          </div>
+
+
+          <h2>
+
+            Un tiempo de
+
+            <span>
+              restauración.
+            </span>
+
+          </h2>
+
+
+          <div class="author-name">
+            Dra. Ruth Zenaida Manzanares
+          </div>
+
+
+          <div class="author-role">
+            Autora y Editora
+          </div>
+
+
+          <p>
+
+            La Dra. Ruth Zenaida Manzanares presenta
+            <strong>13 Claves Para Ser Restaurado</strong>,
+            una obra concebida para acompañar a quienes
+            desean sanar, renovar su mente, fortalecer su fe
+            y avanzar hacia una vida con propósito.
+
+          </p>
+
+
+          <p>
+
+            A través de trece claves, la autora invita al lector
+            a reconocer que la restauración es también un proceso
+            de transformación, identidad y crecimiento personal.
+
+          </p>
+
+
+          <div class="author-quote">
+
+            “Dios tiene 13 claves para transformar tu vida
+            y devolverte la plenitud que Él diseñó para ti.”
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
     <!-- HERO -->
 
     <section
@@ -1062,11 +1521,12 @@
 
       <div class="container hero-grid">
 
-        <div>
+        <div class="reveal-left">
 
           <div class="eyebrow">
             Una lectura para volver a empezar
           </div>
+
 
           <h1>
 
@@ -1077,6 +1537,7 @@
             </span>
 
           </h1>
+
 
           <p class="lead">
 
@@ -1092,6 +1553,7 @@
 
           </p>
 
+
           <div class="hero-actions">
 
             <button
@@ -1100,6 +1562,7 @@
             >
               Añadir al carrito · $7.99
             </button>
+
 
             <a
               href="#acerca"
@@ -1113,7 +1576,7 @@
         </div>
 
 
-        <div class="book">
+        <div class="book reveal-right">
 
           <img
             src="Imagen1.jpeg"
@@ -1133,7 +1596,7 @@
 
       <div class="container">
 
-        <div class="about-box">
+        <div class="about-box reveal">
 
           <div class="eyebrow">
             Acerca del libro
@@ -1171,7 +1634,7 @@
 
       <div class="container">
 
-        <div class="section-head">
+        <div class="section-head reveal">
 
           <div class="eyebrow">
             Más que un libro
@@ -1182,11 +1645,9 @@
           </h2>
 
           <p>
-
             Una lectura enfocada en sanar,
             fortalecer la fe, renovar la mente
             y avanzar con propósito.
-
           </p>
 
         </div>
@@ -1194,49 +1655,43 @@
 
         <div class="cards">
 
-          <div class="card">
+          <div class="card reveal">
 
             <h3>
               ✦ 13 claves prácticas
             </h3>
 
             <p>
-
               Un recorrido estructurado para avanzar
               paso a paso hacia la restauración.
-
             </p>
 
           </div>
 
 
-          <div class="card">
+          <div class="card reveal">
 
             <h3>
               ♡ Sanar y renovar
             </h3>
 
             <p>
-
               Reflexiones para dejar atrás heridas
               y fortalecer la mente y la fe.
-
             </p>
 
           </div>
 
 
-          <div class="card">
+          <div class="card reveal">
 
             <h3>
               ↗ Vivir con propósito
             </h3>
 
             <p>
-
               Descubre tu identidad y avanza
               hacia una restauración integral.
-
             </p>
 
           </div>
@@ -1254,7 +1709,7 @@
 
       <div class="container product-grid">
 
-        <div class="product-img">
+        <div class="product-img reveal-left">
 
           <img
             src="Imagen1.jpeg"
@@ -1264,26 +1719,27 @@
         </div>
 
 
-        <div class="product-info">
+        <div class="product-info reveal-right">
 
           <div class="eyebrow">
             eBook disponible
           </div>
 
+
           <h2>
             13 Claves Para Ser Restaurado
           </h2>
+
 
           <div class="author">
             Dra. Ruth Zenaida Manzanares
           </div>
 
-          <p>
 
+          <p>
             Una guía práctica y espiritual para quienes desean
             sanar, renovar su mente y avanzar hacia una vida
             con propósito.
-
           </p>
 
 
@@ -1327,22 +1783,11 @@
 
           <div class="delivery-note">
 
-            <div class="delivery-icon">
-              ⏱️
-            </div>
-
-            <div>
-
-              <strong>
-                Entrega del eBook:
-              </strong>
-
-              después de confirmar tu pago,
-              el acceso al libro será concedido
-              en un tiempo aproximado de
-              <strong>5 a 20 minutos</strong>.
-
-            </div>
+            ⏱️ <strong>Entrega del eBook:</strong>
+            después de confirmar tu pago,
+            el acceso al libro será concedido
+            en un tiempo aproximado de
+            <strong>5 a 20 minutos</strong>.
 
           </div>
 
@@ -1361,25 +1806,244 @@
     </section>
 
 
+    <!-- RESEÑAS -->
+
+    <section
+      class="reviews-section"
+      id="resenas"
+    >
+
+      <div class="container">
+
+        <div class="section-head reveal">
+
+          <div class="eyebrow">
+            Opiniones de lectores
+          </div>
+
+          <h2>
+            Comentarios y reseñas
+          </h2>
+
+          <p>
+            ¿Ya leíste 13 Claves Para Ser Restaurado?
+            Comparte tu experiencia con otros lectores.
+          </p>
+
+        </div>
+
+
+        <div class="reviews-grid">
+
+          <div class="review-form-box reveal-left">
+
+            <h3>
+              Escribe tu reseña
+            </h3>
+
+            <p>
+              Tu correo se utiliza únicamente para identificar
+              la reseña y no se mostrará públicamente.
+            </p>
+
+
+            <form id="reviewForm">
+
+              <div class="form-group">
+
+                <label for="reviewName">
+                  Nombre
+                </label>
+
+                <input
+                  class="form-control"
+                  id="reviewName"
+                  type="text"
+                  maxlength="60"
+                  placeholder="Tu nombre"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="reviewEmail">
+                  Correo electrónico
+                </label>
+
+                <input
+                  class="form-control"
+                  id="reviewEmail"
+                  type="email"
+                  maxlength="120"
+                  placeholder="correo@ejemplo.com"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label>
+                  Calificación
+                </label>
+
+                <div
+                  class="stars-input"
+                  id="starsInput"
+                >
+
+                  <button
+                    type="button"
+                    class="star-input"
+                    data-rating="1"
+                    aria-label="1 estrella"
+                  >
+                    ★
+                  </button>
+
+                  <button
+                    type="button"
+                    class="star-input"
+                    data-rating="2"
+                    aria-label="2 estrellas"
+                  >
+                    ★
+                  </button>
+
+                  <button
+                    type="button"
+                    class="star-input"
+                    data-rating="3"
+                    aria-label="3 estrellas"
+                  >
+                    ★
+                  </button>
+
+                  <button
+                    type="button"
+                    class="star-input"
+                    data-rating="4"
+                    aria-label="4 estrellas"
+                  >
+                    ★
+                  </button>
+
+                  <button
+                    type="button"
+                    class="star-input"
+                    data-rating="5"
+                    aria-label="5 estrellas"
+                  >
+                    ★
+                  </button>
+
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="reviewComment">
+                  Comentario
+                </label>
+
+                <textarea
+                  class="form-control"
+                  id="reviewComment"
+                  maxlength="800"
+                  placeholder="Cuéntanos qué te pareció el libro..."
+                  required
+                ></textarea>
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="review-submit"
+                id="reviewSubmit"
+              >
+                Publicar reseña
+              </button>
+
+
+              <div
+                class="form-message"
+                id="formMessage"
+              >
+              </div>
+
+            </form>
+
+          </div>
+
+
+          <div class="reveal-right">
+
+            <div
+              class="reviews-summary"
+              id="reviewsSummary"
+              style="display:none;"
+            >
+
+              <strong id="averageRating">
+                0.0
+              </strong>
+
+              <span
+                class="summary-stars"
+                id="averageStars"
+              >
+              </span>
+
+              <small id="reviewsCount">
+              </small>
+
+            </div>
+
+
+            <div
+              class="reviews-list"
+              id="reviewsList"
+            >
+
+              <div class="reviews-loading">
+                Cargando reseñas...
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
     <!-- CTA -->
 
     <section>
 
       <div class="container">
 
-        <div class="cta">
+        <div class="cta reveal">
 
           <h2>
             Es tiempo de restauración.
           </h2>
 
           <p>
-
             Obtén tu copia digital de
             13 Claves para Ser Restaurado
             y comienza este camino de renovación,
             fe, identidad y propósito.
-
           </p>
 
           <button
@@ -1388,7 +2052,6 @@
           >
             Añadir al carrito · $7.99 USD
           </button>
-
 
           <div class="cta-delivery">
 
@@ -1412,77 +2075,98 @@
 
   <footer>
 
-    <div class="container footer-grid">
+    <div class="container">
 
-      <div>
+      <div class="footer-grid">
 
-        <h3>
-          Tiempo de Restauración
-        </h3>
+        <div>
 
-        <p>
+          <h3>
+            Tiempo de Restauración
+          </h3>
 
-          Tienda oficial del eBook
-          13 Claves Para Ser Restaurado.
+          <p>
+            Tienda oficial del eBook
+            13 Claves Para Ser Restaurado,
+            de la Dra. Ruth Zenaida Manzanares.
+          </p>
 
-        </p>
+        </div>
+
+
+        <div>
+
+          <h4>
+            Navegación
+          </h4>
+
+          <p>
+
+            <a href="#inicio">
+              Inicio
+            </a>
+
+            <br>
+
+            <a href="#autora">
+              La autora
+            </a>
+
+            <br>
+
+            <a href="#libro">
+              Comprar
+            </a>
+
+            <br>
+
+            <a href="#resenas">
+              Reseñas
+            </a>
+
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4>
+            Contacto
+          </h4>
+
+          <p>
+
+            <a
+              href="https://wa.me/50487439169"
+              target="_blank"
+            >
+              +504 8743-9169
+            </a>
+
+            <br><br>
+
+            <a
+              href="mailto:ruth.manzanares2016@gmail.com"
+            >
+              ruth.manzanares2016@gmail.com
+            </a>
+
+          </p>
+
+        </div>
 
       </div>
 
 
-      <div>
+      <!-- CRÉDITOS -->
 
-        <h4>
-          Navegación
-        </h4>
+      <div class="footer-credit">
 
-        <p>
-
-          <a href="#inicio">
-            Inicio
-          </a>
-
-          <br>
-
-          <a href="#acerca">
-            Acerca de
-          </a>
-
-          <br>
-
-          <a href="#libro">
-            Comprar
-          </a>
-
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <h4>
-          Contacto
-        </h4>
-
-        <p>
-
-          <a
-            href="https://wa.me/50487439169"
-            target="_blank"
-          >
-            +504 8743-9169
-          </a>
-
-          <br><br>
-
-          <a
-            href="mailto:ruth.manzanares2016@gmail.com"
-          >
-            ruth.manzanares2016@gmail.com
-          </a>
-
-        </p>
+        Página web creada por
+        <strong>Oscar Barraza</strong>
+        y
+        <strong>Alexander Fedrick</strong>.
 
       </div>
 
@@ -1573,7 +2257,6 @@
 
     <div class="payment-box">
 
-
       <div class="payment-top">
 
         <div>
@@ -1630,16 +2313,8 @@
         en un tiempo aproximado de
         <strong>5 a 20 minutos.</strong>
 
-        <br><br>
-
-        El acceso será enviado o habilitado
-        utilizando la información proporcionada
-        durante el proceso de compra.
-
       </div>
 
-
-      <!-- PAYPAL -->
 
       <div class="payment-method">
 
@@ -1648,13 +2323,8 @@
         </h3>
 
         <p class="payment-description">
-
           Realiza tu pago mediante el sistema seguro de PayPal.
-          PayPal puede ofrecer PayPal, tarjeta de crédito o tarjeta
-          de débito según las opciones disponibles para el comprador.
-
         </p>
-
 
         <div class="paypal-wrapper">
 
@@ -1668,29 +2338,17 @@
       </div>
 
 
-      <!-- TRANSFERENCIA -->
-
       <div class="payment-method">
 
         <h3>
           Transferencia bancaria
         </h3>
 
-        <p class="payment-description">
-
-          También puedes realizar el pago mediante
-          transferencia bancaria nacional.
-
-        </p>
-
-
         <button
           class="bank-button"
           onclick="mostrarBancos()"
         >
-
           🏦 Ver información para transferencia
-
         </button>
 
 
@@ -1721,13 +2379,6 @@
 
           <br><br>
 
-          Una vez confirmado el pago,
-          recibirás acceso al eBook
-          aproximadamente entre
-          <strong>5 y 20 minutos.</strong>
-
-          <br><br>
-
           <a
             href="https://wa.me/50487439169?text=Hola%2C%20realic%C3%A9%20el%20pago%20del%20eBook%2013%20Claves%20Para%20Ser%20Restaurado."
             target="_blank"
@@ -1736,9 +2387,7 @@
               font-weight:800;
             "
           >
-
             Enviar comprobante por WhatsApp →
-
           </a>
 
         </div>
@@ -1759,6 +2408,29 @@
 
   <script>
 
+    /* =========================
+       SUPABASE
+    ========================== */
+
+    const SUPABASE_URL =
+      "https://gtzrzfznxzariveglnzl.supabase.co";
+
+
+    const SUPABASE_ANON_KEY =
+      "sb_publishable_vp8OUY84ItsoKNt_qHW-qg_LmyVW9xq";
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+      );
+
+
+    /* =========================
+       PRODUCTO
+    ========================== */
+
     const PRODUCTO = {
 
       id:
@@ -1776,6 +2448,10 @@
     };
 
 
+    /* =========================
+       CARRITO
+    ========================== */
+
     let carrito =
       JSON.parse(
         localStorage.getItem(
@@ -1787,11 +2463,8 @@
     function guardarCarrito() {
 
       localStorage.setItem(
-
         "carritoTiempoRestauracion",
-
         JSON.stringify(carrito)
-
       );
 
     }
@@ -1809,11 +2482,8 @@
       if (!existe) {
 
         carrito.push({
-
           ...PRODUCTO,
-
           cantidad: 1
-
         });
 
       }
@@ -1846,18 +2516,15 @@
           "cartItems"
         );
 
-
       const numero =
         document.getElementById(
           "cartNumber"
         );
 
-
       const total =
         document.getElementById(
           "cartTotal"
         );
-
 
       const checkout =
         document.getElementById(
@@ -1875,11 +2542,7 @@
 
           <div class="empty">
 
-            <div
-              style="
-                font-size:3rem;
-              "
-            >
+            <div style="font-size:3rem;">
               🛒
             </div>
 
@@ -1945,9 +2608,7 @@
               class="remove"
               onclick="eliminarProducto()"
             >
-
               Eliminar del carrito
-
             </button>
 
           </div>
@@ -2083,6 +2744,10 @@
     }
 
 
+    /* =========================
+       MENÚ
+    ========================== */
+
     const menuBtn =
       document.getElementById(
         "menuBtn"
@@ -2137,6 +2802,10 @@
       );
 
 
+    /* =========================
+       PAYPAL
+    ========================== */
+
     paypal.HostedButtons({
 
       hostedButtonId:
@@ -2149,7 +2818,612 @@
     );
 
 
+    /* =========================
+       RESEÑAS
+    ========================== */
+
+    let selectedRating = 0;
+
+
+    const starButtons =
+      document.querySelectorAll(
+        ".star-input"
+      );
+
+
+    starButtons.forEach(
+
+      button => {
+
+        button.addEventListener(
+
+          "click",
+
+          function() {
+
+            selectedRating =
+              Number(
+                this.dataset.rating
+              );
+
+
+            actualizarEstrellasFormulario();
+
+          }
+
+        );
+
+      }
+
+    );
+
+
+    function actualizarEstrellasFormulario() {
+
+      starButtons.forEach(
+
+        button => {
+
+          const rating =
+            Number(
+              button.dataset.rating
+            );
+
+
+          button.classList.toggle(
+            "active",
+            rating <= selectedRating
+          );
+
+        }
+
+      );
+
+    }
+
+
+    function sanitizarTexto(texto) {
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.textContent =
+        texto;
+
+
+      return div.innerHTML;
+
+    }
+
+
+    function inicialNombre(nombre) {
+
+      return (
+        nombre
+          .trim()
+          .charAt(0)
+          .toUpperCase()
+        || "L"
+      );
+
+    }
+
+
+    function estrellasHTML(rating) {
+
+      let html = "";
+
+
+      for (
+        let i = 1;
+        i <= 5;
+        i++
+      ) {
+
+        html +=
+          i <= rating
+            ? "★"
+            : "☆";
+
+      }
+
+
+      return html;
+
+    }
+
+
+    function fechaBonita(fecha) {
+
+      return new Date(
+        fecha
+      ).toLocaleDateString(
+
+        "es-HN",
+
+        {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }
+
+      );
+
+    }
+
+
+    async function cargarResenas() {
+
+      const reviewsList =
+        document.getElementById(
+          "reviewsList"
+        );
+
+
+      reviewsList.innerHTML = `
+
+        <div class="reviews-loading">
+          Cargando reseñas...
+        </div>
+
+      `;
+
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from("reviews")
+            .select(
+              "id,name,rating,comment,created_at"
+            )
+            .order(
+              "created_at",
+              {
+                ascending: false
+              }
+            );
+
+
+        if (error) {
+
+          throw error;
+
+        }
+
+
+        if (
+          !data ||
+          data.length === 0
+        ) {
+
+          reviewsList.innerHTML = `
+
+            <div class="reviews-empty">
+
+              Todavía no hay reseñas.
+
+              <br><br>
+
+              Sé la primera persona
+              en compartir tu experiencia.
+
+            </div>
+
+          `;
+
+
+          document
+            .getElementById(
+              "reviewsSummary"
+            )
+            .style.display =
+            "none";
+
+
+          return;
+
+        }
+
+
+        const promedio =
+          data.reduce(
+            (suma, item) =>
+              suma +
+              Number(item.rating),
+            0
+          ) / data.length;
+
+
+        document
+          .getElementById(
+            "reviewsSummary"
+          )
+          .style.display =
+          "block";
+
+
+        document
+          .getElementById(
+            "averageRating"
+          )
+          .textContent =
+          promedio.toFixed(1);
+
+
+        document
+          .getElementById(
+            "averageStars"
+          )
+          .textContent =
+          estrellasHTML(
+            Math.round(promedio)
+          );
+
+
+        document
+          .getElementById(
+            "reviewsCount"
+          )
+          .textContent =
+          `${data.length} ${
+            data.length === 1
+              ? "reseña publicada"
+              : "reseñas publicadas"
+          }`;
+
+
+        reviewsList.innerHTML =
+          data
+            .map(
+
+              review => `
+
+                <article class="review-card">
+
+                  <div class="review-top">
+
+                    <div class="review-user">
+
+                      <div class="review-avatar">
+
+                        ${inicialNombre(
+                          review.name
+                        )}
+
+                      </div>
+
+                      <div>
+
+                        <div class="review-name">
+
+                          ${sanitizarTexto(
+                            review.name
+                          )}
+
+                        </div>
+
+                        <div class="review-date">
+
+                          ${fechaBonita(
+                            review.created_at
+                          )}
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="review-stars">
+
+                      ${estrellasHTML(
+                        Number(
+                          review.rating
+                        )
+                      )}
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="review-comment">
+
+                    ${sanitizarTexto(
+                      review.comment
+                    )}
+
+                  </p>
+
+                </article>
+
+              `
+
+            )
+            .join("");
+
+
+      }
+
+      catch(error) {
+
+        console.error(
+          "Error cargando reseñas:",
+          error
+        );
+
+
+        reviewsList.innerHTML = `
+
+          <div class="reviews-empty">
+
+            No fue posible cargar
+            las reseñas en este momento.
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    document
+      .getElementById(
+        "reviewForm"
+      )
+      .addEventListener(
+
+        "submit",
+
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const formMessage =
+            document.getElementById(
+              "formMessage"
+            );
+
+
+          const submit =
+            document.getElementById(
+              "reviewSubmit"
+            );
+
+
+          formMessage.className =
+            "form-message";
+
+
+          if (
+            selectedRating < 1 ||
+            selectedRating > 5
+          ) {
+
+            formMessage.className =
+              "form-message error";
+
+
+            formMessage.textContent =
+              "Selecciona una calificación de 1 a 5 estrellas.";
+
+
+            return;
+
+          }
+
+
+          const name =
+            document
+              .getElementById(
+                "reviewName"
+              )
+              .value
+              .trim();
+
+
+          const email =
+            document
+              .getElementById(
+                "reviewEmail"
+              )
+              .value
+              .trim();
+
+
+          const comment =
+            document
+              .getElementById(
+                "reviewComment"
+              )
+              .value
+              .trim();
+
+
+          if (
+            !name ||
+            !email ||
+            !comment
+          ) {
+
+            formMessage.className =
+              "form-message error";
+
+
+            formMessage.textContent =
+              "Completa todos los campos.";
+
+
+            return;
+
+          }
+
+
+          submit.disabled =
+            true;
+
+
+          submit.textContent =
+            "Publicando...";
+
+
+          try {
+
+            const {
+              error
+            } =
+              await supabaseClient
+                .from("reviews")
+                .insert([
+                  {
+                    name: name,
+                    email: email,
+                    rating: selectedRating,
+                    comment: comment
+                  }
+                ]);
+
+
+            if (error) {
+
+              throw error;
+
+            }
+
+
+            this.reset();
+
+
+            selectedRating =
+              0;
+
+
+            actualizarEstrellasFormulario();
+
+
+            formMessage.className =
+              "form-message success";
+
+
+            formMessage.textContent =
+              "¡Gracias! Tu reseña fue publicada correctamente.";
+
+
+            await cargarResenas();
+
+
+          }
+
+          catch(error) {
+
+            console.error(
+              "Error publicando reseña:",
+              error
+            );
+
+
+            formMessage.className =
+              "form-message error";
+
+
+            formMessage.textContent =
+              "No se pudo publicar la reseña. Revisa los permisos de Supabase e intenta nuevamente.";
+
+          }
+
+          finally {
+
+            submit.disabled =
+              false;
+
+
+            submit.textContent =
+              "Publicar reseña";
+
+          }
+
+        }
+
+      );
+
+
+    /* =========================
+       ANIMACIONES
+    ========================== */
+
+    const observer =
+      new IntersectionObserver(
+
+        entries => {
+
+          entries.forEach(
+
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target
+                  .classList
+                  .add("show");
+
+
+                observer
+                  .unobserve(
+                    entry.target
+                  );
+
+              }
+
+            }
+
+          );
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(
+        ".reveal, .reveal-left, .reveal-right"
+      )
+      .forEach(
+
+        elemento => {
+
+          observer.observe(
+            elemento
+          );
+
+        }
+
+      );
+
+
+    /* =========================
+       INICIAR
+    ========================== */
+
     actualizarCarrito();
+
+    cargarResenas();
 
   </script>
 
